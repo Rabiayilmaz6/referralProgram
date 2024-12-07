@@ -9,7 +9,7 @@ class UsersController < ApplicationController
           referral_code = ReferralCode.find_by(code: params[:referral_code], active: true)
           if referral_code
             # Create referral
-            referral = Referral.create!(
+            Referral.create!(
               referral_code: referral_code,
               referred_user: @user,
               referrer_user: referral_code.user,
