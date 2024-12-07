@@ -1,9 +1,9 @@
 class ReferralRewardService
   REWARD_RULES = {
     low: { referrer: 1, referred: 0 },
-    medium: { referrer: 2, referred: 1 },
-    high: { referrer: 4, referred: 2 },
-    very_high: { referrer: 5, referred: 3 }
+    medium: { referrer: 3, referred: 2 },
+    high: { referrer: 6, referred: 4 },
+    very_high: { referrer: 10, referred: 5 }
   }.freeze
 
   def initialize(referral, level)
@@ -15,8 +15,7 @@ class ReferralRewardService
   def process
     # Ödülleri oluştur
     create_reward(@referral.referrer_user, @referral, @rules[:referrer], :referrer_bonus)
-    # Davet edilen kullanıcı için ödül yok (sizin belirttiğiniz kurallara göre)
-    # Eğer isterseniz, referred bonus ekleyebilirsiniz
+    create_reward(@referral.referred_user, @referral, @rules[:referred], :referred_bonus)
   end
 
   private
