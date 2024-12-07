@@ -11,7 +11,9 @@ class RewardsController < ApplicationController
       # Ödül hesaplama
       calculate_rewards(user, amount)
 
-      render json: { message: 'Credits loaded successfully.' }, status: :ok
+      render json: { message: 'Credits loaded successfully.',
+      rewards: user.rewards.order(created_at: :desc)
+      }, status: :ok
     end
   end
 
