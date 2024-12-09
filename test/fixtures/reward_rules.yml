@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  min_amount: 1
+  max_amount: 1
+  referrer_amount: 1
+  referred_amount: 1
+
+two:
+  min_amount: 1
+  max_amount: 1
+  referrer_amount: 1
+  referred_amount: 1
