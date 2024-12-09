@@ -1,7 +1,11 @@
 class ReferralsController < ApplicationController
-  # GET /users/:user_id/referrals
+  def show
+    @referral = Referral.find(params[:id])
+    render json: @referral
+  end
+  # GET /referrals
   def index
-    user = User.find(params[:user_id])
-    render json: user.referrals_as_referrer, include: [:referred_user]
+    @referral = Referral.all
+    render json: @referral
   end
 end

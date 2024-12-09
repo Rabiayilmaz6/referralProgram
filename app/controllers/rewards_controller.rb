@@ -1,12 +1,15 @@
 class RewardsController < ApplicationController
-  # POST /users/:user_id/load_credits
-  def load_credits
+  def show
+    user = User.find(params[:user_id])
+    reward = user.rewards.find(params[:id])
+    render json: reward
+  end
+  # GET /users/:user_id/rewards
+  def index
     user = User.find(params[:user_id])
     amount = params[:amount].to_f
 
     ActiveRecord::Base.transaction do
-      # İşlem mantığınızı burada gerçekleştirin (örneğin, kredi yükleme işlemi)
-      # Bu örnekte sadece basit bir kredi yükleme simülasyonu yapıyoruz.
 
       # Ödül hesaplama
       calculate_rewards(user, amount)

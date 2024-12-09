@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-    resources :users, only: [:create] do
-        resources :referrals, only: [:index]
-        post 'load_credits', to: 'rewards#load_credits'
-        resources :rewqrds, only: [:index]
+    resources :referrals
+    resources :users do
+        resources :rewards
+        get 'rewards', to: 'rewards#index'
+        get 'referrals', to: 'referrals#index'
+        get 'referrals/:id', to: 'referrals#show'
     end
 end
