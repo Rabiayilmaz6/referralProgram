@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_06_071615) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_11_105836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_06_071615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_referral_codes_on_user_id"
+  end
+
+  create_table "referral_credit_categories", force: :cascade do |t|
+    t.integer "min_amount", null: false
+    t.integer "max_amount"
+    t.integer "referrer_amount", null: false
+    t.integer "referred_amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["min_amount", "max_amount"], name: "index_referral_credit_categories_on_min_amount_and_max_amount", unique: true
   end
 
   create_table "referrals", force: :cascade do |t|
